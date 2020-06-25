@@ -3,5 +3,6 @@
 CONFIG =
   {
     directory: "/#{Dir.home}/site/",
-    author: 'EliseZeroTwo'
+    author: 'EliseZeroTwo',
+    title: 'i0.wtf @EliseZeroTwo'
   }.freeze

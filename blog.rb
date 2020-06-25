@@ -3,7 +3,8 @@ require 'json'
 require 'pathname'
 require 'sinatra'
 
-set bind: '0.0.0.0'
+set bind: '127.0.0.1'
+set port: 1042
 
 DEFAULT_PROJECT_JSON = [['A Project Title', 'A short summary', 'https://github.com/EliseZeroTwo/i0',
                          'https://github.com/EliseZeroTwo/i0']].freeze
@@ -41,7 +42,7 @@ get '/' do
   end
   proj_file = File.open(CONFIG[:directory] + '/projects.json')
   project_meta = JSON.parse(proj_file.read)
-  erb :index, locals: { articles: article_meta, projects: project_meta }
+  erb :index, locals: { title: CONFIG[:title], articles: article_meta, projects: project_meta }
 end
 
 get '/article/:path' do |path|
@@ -54,10 +55,10 @@ get '/article/:path' do |path|
   if valid_path
     content = pathname.read
     title = name.gsub('-', ' ')
-    erb :article, locals: {author: CONFIG[:author], content: content, read_time: calculate_read_time(content),
+    erb :article, locals: { title: CONFIG[:title], author: CONFIG[:author], content: content, read_time: calculate_read_time(content),
                            title: title }
   else
-    erb :article, locals: { author: 'N/A', content: '', read_time: calculate_read_time(nil),
+    erb :article, locals: { title: CONFIG[:title], author: 'N/A', content: '', read_time: calculate_read_time(nil),
                             title: 'Not found' }
   end
 
