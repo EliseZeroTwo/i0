@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>i0.wtf actual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cedarville+Cursive">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Clicker+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.min.css">
+    <link rel="stylesheet" href="./assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="./assets/css/Navigation-Clean.css">
+    <style>
+      .card-group > .card .card-footer, .card .card-header, .card-group > .card .card-img-bottom {
+        border: 0px;
+      }
+    </style>
+</head>
+
+<body style="background-color: #2e2536;">
+    <div></div>
+    <nav class="navbar navbar-light navbar-expand-md sticky-top navigation-clean" style="background-color: #403f43;height: 60pp;">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button><img class="rounded-circle border rounded border-white" src="https://avatars0.githubusercontent.com/u/42453798"
+                style="width: 5%;"><a class="navbar-brand" href="#" style="color: #ffaabb;font-family: 'Poiret One', cursive;padding-left: 2%;padding-top: 5px;">EliseZeroTwo</a>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#projects" style="color: rgb(255,170,187);font-family: Raleway, sans-serif;">Me</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#" style="color: #ffaabb;font-family: Raleway, sans-serif;">Write Ups</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#projects" style="color: rgb(255,170,187);font-family: Raleway, sans-serif;">Projects</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="background-color: #2e2536;">
+        <h1 class="text-center" id="me" style="color: #ffaabb;font-family: 'Cedarville Cursive', cursive;padding-left: 0%;padding-top: 2%;padding-bottom: 0;">Me</h1>
+        <hr style="background-color: #686573;height: 1px;">
+    </div>
+    <div class="container">
+        <div class="card" style="background-color: #EEEEEE;">
+            <div class="card-body">
+                <p class="text-center card-text" style="color: #726677;margin-bottom: -17px;">I am a 16 year old female (she/her) developer&nbsp;living in Berlin who writes Ruby, C# and C</p>
+                <div class="text-center"><a href="https://github.com/EliseZeroTwo"><i class="typcn typcn-social-github-circular" style="font-size: 50px;color: #686573;"></i></a><a href="https://twitter.com/EliseZeroTwo"><i class="typcn typcn-social-twitter-circular" style="font-size: 50px;color: #686573;"></i></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="background-color: #2e2536;">
+        <h1 class="text-center" id="projects" style="color: #ffaabb;font-family: 'Cedarville Cursive', cursive;padding-left: 0%;padding-top: 2%;padding-bottom: 0;">Projects</h1>
+        <hr style="background-color: #686573;height: 1px;">
+    </div>
+    <div class="container">
+        <section class="d-inline" style="padding-top: 1%;">
+            <div class="card-group">
+              <% projects.each do |project| %>
+                <div class="card border-dark border rounded" style="padding-top: 0px;margin-top: 2%;margin-left: 2%;margin-right: 2%;background-color: #eeeeee;min-width: 30%;min-height: 311px;">
+                    <div class="card-header" style="opacity: 1;filter: contrast(100%);background-color: rgba(0,0,0,0);">
+                        <h4 class="text-center" style="margin-left: 0%;margin-top: 10%;font-family: Raleway, sans-serif;font-style: normal;font-weight: bold;font-size: 24px;color: #2e2536;"><%= project[0] %></h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center card-text" style="font-family: Raleway, sans-serif;color: #2e2536;"><%= project[1] %></p>
+                    </div>
+                    <div class="card-footer" style="background-color: rgba(0,0,0,0);"><a class="float-left" href="<%= project[2] %>" style="font-family: Raleway, sans-serif;color: #a06dc9;">Source</a><a class="float-right" href="<%= project[3] %>" style="font-family: Raleway, sans-serif;color: #a06dc9;">Download</a></div>
+                </div>
+              <% end %>
+            </div>
+        </section>
+    </div>
+    <div class="container" style="background-color: #2e2536;">
+        <h1 class="text-center" id="write-ups" style="color: #ffaabb;font-family: 'Cedarville Cursive', cursive;padding-left: 0%;padding-top: 2%;padding-bottom: 0;">Write Ups</h1>
+        <hr style="background-color: #686573;height: 1px;">
+    </div>
+    <div class="container">
+        <div class="card-group">
+          <% require 'redcarpet' %>
+          <% require 'redcarpet/render_strip' %>
+          <% articles.each do |meta| %>
+            <div class="card border-dark border rounded" style="padding-top: 0px;margin-top: 2%;margin-left: 2%;margin-right: 2%;background-color: #eeeeee;min-width: 30%;margin-bottom: 12%;height: 311px;">
+                <div class="card-header text-center" style="opacity: 1;filter: contrast(100%);background-color: rgba(0,0,0,0);">
+                      <h4
+                          class="text-center" style="margin-left: 0%;margin-top: 2%;font-family: Raleway, sans-serif;font-style: normal;font-weight: bold;font-size: 24px;color: #2e2536;"><%= meta[0].gsub('-', ' ').gsub('.md', '') %></h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-center card-text" style="font-family: Raleway, sans-serif;color: #2e2536;"><%= Redcarpet::Markdown.new(Redcarpet::Render::StripDown).render(meta[1]) %></p>
+                </div>
+                <div class="card-footer text-center" style="background-color: #eeeeee;"><a class="text-center" href="article/<%= meta[0].gsub('.md', '') %>" style="color: #a06dc9;">Read</a></div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+    <footer class="text-center" style="padding-top: 2%;"><a href="/" style="color: #a06dc9;font-family: Raleway, sans-serif;">Return Home</a>
+        <h1 style="color: #ffaabb;font-size: 12px;font-family: 'Poiret One', cursive;padding-top: 0.25%;">Copyright EliseZeroTwo</h1>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
