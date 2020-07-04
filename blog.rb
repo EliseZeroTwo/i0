@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require './config.rb'
 require 'json'
 require 'pathname'
@@ -42,7 +43,8 @@ get '/' do
   end
   proj_file = File.open(CONFIG[:directory] + '/projects.json')
   project_meta = JSON.parse(proj_file.read)
-  erb :index, locals: { title: CONFIG[:title], articles: article_meta, projects: project_meta }
+  erb :index, locals: { title: CONFIG[:title], desc: CONFIG[:desc], articles: article_meta, projects: project_meta,
+                        twitter: CONFIG[:twitter], github: CONFIG[:github] }
 end
 
 get '/article/:path' do |path|
@@ -55,11 +57,10 @@ get '/article/:path' do |path|
   if valid_path
     content = pathname.read
     title = name.gsub('-', ' ')
-    erb :article, locals: { title: CONFIG[:title], author: CONFIG[:author], content: content, read_time: calculate_read_time(content),
-                           title: title }
+    erb :article, locals: { title: title, author: CONFIG[:author], content: content,
+                            read_time: calculate_read_time(content) }
   else
-    erb :article, locals: { title: CONFIG[:title], author: 'N/A', content: '', read_time: calculate_read_time(nil),
-                            title: 'Not found' }
+    erb :article, locals: { title: 'Not found', author: 'N/A', content: '', read_time: calculate_read_time(nil) }
   end
 
 end
